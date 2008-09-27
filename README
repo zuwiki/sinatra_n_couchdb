@@ -1,0 +1,5 @@
+Make sure you have the Sinatra, Haml and RelaxDB gems installed and a CouchDB database somewhere.
+
+Get RelaxDB from http://github.com/paulcarey/relaxdb/tree/master
+
+Run Seclusion with 'ruby seclusion.rb'
