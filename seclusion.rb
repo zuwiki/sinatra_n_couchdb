@@ -19,6 +19,7 @@ get '/' do
   haml :index
 end
 
-#get '/:id' do
-#  @post = Post.
-#end
+get '/:id' do
+  @post = Post.get(params[:id])
+  haml :post
+end
