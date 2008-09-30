@@ -28,11 +28,11 @@ end
 
 # Endpoint for creating posts
 post '/post' do
-  @post = Post.new
-  @post.body = params[:body]
+  post = Post.new
+  post.body = params[:body]
   # TODO: Validate first, or include validation by hacking up CouchRest
-  @post.save
-  redirect "/post/" + @post.id
+  post.save
+  redirect path_to_post(post)
 end
 
 # Individual views for posts
