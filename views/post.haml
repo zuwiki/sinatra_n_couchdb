@@ -1,2 +1,4 @@
 = haml :_post, :locals => { :post => @post }
+-# should show child posts
+= haml :_post_form, :locals => { :parent_post => @post }
 %a{:href => "/"} Go home

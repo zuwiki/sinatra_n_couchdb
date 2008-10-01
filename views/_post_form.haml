@@ -1,0 +1,10 @@
+%form{:method=>"post", :action=>"/post"}
+  %p
+    %label{:for=>"body"} Body
+    %br
+    %textarea{:name => "body", :id=> "body", :cols => 80, :rows => 7}
+    - if parent_post then
+      %input{:type => "hidden", :name => "parent_id",:value=>parent_post.id }
+
+  %p
+    %input{:type => "submit", :value => "Post", :name => "commit"}

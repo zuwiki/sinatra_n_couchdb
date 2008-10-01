@@ -15,14 +15,24 @@ class Post
     Post.by_created_at(:count => 1).first
   end
 
+  def add_child(child_id)
+    self.children = [] unless self.children
+    self.children << child_id
+    self.save
+  end
+
   def get_children
     if self.children
       posts = []
       self.children.each do |id|
-        posts.add(Post.get(id))
+        posts << Post.get(id)
       end
     else
       return [] # Maybe this should return nil?
     end
+  end
+
+  def get_parent
+    return Post.get(parent_id)
   end
 end
