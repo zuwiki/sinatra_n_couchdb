@@ -10,4 +10,19 @@ class Post
   key_accessor :body, :children, :parent_id
 
   timestamps!
+
+  def Post.first
+    Post.by_created_at(:count => 1).first
+  end
+
+  def get_children
+    if self.children
+      posts = []
+      self.children.each do |id|
+        posts.add(Post.get(id))
+      end
+    else
+      return [] # Maybe this should return nil?
+    end
+  end
 end
