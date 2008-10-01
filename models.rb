@@ -7,7 +7,7 @@ class Post
   view_by :created_at, :descending => true
 
   key_reader :created_at, :updated_at
-  key_accessor :body
-  
+  key_accessor :body, :children, :parent_id
+
   timestamps!
 end
