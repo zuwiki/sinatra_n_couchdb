@@ -4,8 +4,12 @@ helpers do
     @title = str + " &mdash; Seclusion"
   end
 
-  def path_to_post(post_id)
-    return '/post/' + post_id
+  def path_to_post(post)
+    if post.class == Post
+      return '/post/' + post.id
+    else
+      return '/post/' + post.to_s
+    end
   end
 
   def link_to_post(post, text)
