@@ -11,28 +11,34 @@ class Post
 
   timestamps!
 
+  ## Some query helpers
   def Post.first
     Post.by_created_at(:count => 1).first
   end
 
   def add_child(child_id)
-    self.children = [] unless self.children
-    self.children << child_id
-    self.save
+    children = [] unless children
+    children << child_id
+    save
   end
 
   def get_children
-    if self.children
+    if children
       posts = []
-      self.children.each do |id|
+      children.each do |id|
         posts << Post.get(id)
       end
     else
-      return [] # Maybe this should return nil?
+      return nil # Maybe this should return [] ?
     end
+    return posts
   end
 
   def get_parent
-    return Post.get(parent_id)
+    if parent_id
+      return Post.get(parent_id)
+    else
+      return nil
+    end
   end
 end

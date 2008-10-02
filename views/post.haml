@@ -1,4 +1,7 @@
 = haml :_post, :locals => { :post => @post }
--# should show child posts
+= link_to_post(@post.parent_id, "Go to parent") if @post.parent_id
+- if @children
+  - for child in @children do
+    = haml :_post, :locals => { :post => child }
 = haml :_post_form, :locals => { :parent_post => @post }
 %a{:href => "/"} Go home

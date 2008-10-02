@@ -49,5 +49,6 @@ end
 # Individual views for posts
 get '/post/:id' do
   @post = Post.get(params[:id])
+  @children = @post.get_children if @post.children
   haml :post
 end
