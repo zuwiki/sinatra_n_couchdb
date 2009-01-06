@@ -2,7 +2,7 @@ require 'couchrest'
 
 class Post
   include CouchRest::Model
-  use_database CouchRest.database!("http://localhost:5984/seclusion-test")
+  use_database CouchRest.database!("http://localhost:5984/seclusion-test") # Needs to be in a config file
 
   view_by :created_at, :descending => true
 
